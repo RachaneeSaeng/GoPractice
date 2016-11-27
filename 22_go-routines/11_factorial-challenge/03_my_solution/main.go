@@ -6,16 +6,16 @@ import (
 )
 
 func main() {
-	numFact := 8
+	numFact := 5
 	numConcurThread := 3
-	var chans [3]chan int
+	var chans = make([]chan int, numConcurThread)
 	chunkSize := int(math.Ceil(float64(numFact) / float64(numConcurThread)))
 
 	for i := 0; i < numConcurThread; i++ {
 		from := numFact - (i * chunkSize)
 		to := numFact - ((i + 1) * chunkSize)
-		if to < 0 {
-			to = 0
+		if to < 1 {
+			to = 1
 		}
 		chans[i] = factorial(from, to)
 	}
@@ -27,7 +27,7 @@ func main() {
 	fmt.Println(total)
 }
 
-func factorial(from int, to int) chan int {
+func factorial(from, to int) chan int {
 	out := make(chan int)
 	go func() {
 		total := 1

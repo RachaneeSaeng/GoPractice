@@ -9,7 +9,7 @@ func main() {
 	in := gen()
 
 	f := factorial(in)
-
+	// print fac of 3-13 10 times
 	for n := range f {
 		fmt.Println(n)
 	}

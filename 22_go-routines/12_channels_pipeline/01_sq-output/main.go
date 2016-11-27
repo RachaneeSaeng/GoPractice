@@ -8,8 +8,11 @@ func main() {
 	out := sq(c)
 
 	// Consume the output.
-	fmt.Println(<-out) // 4
-	fmt.Println(<-out) // 9
+	// fmt.Println(<-out) // 4
+	// fmt.Println(<-out) // 9
+	for n := range out {
+		fmt.Println(n)
+	}
 }
 
 func gen(nums ...int) chan int {

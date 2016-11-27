@@ -10,9 +10,11 @@ var publisherID int
 
 func main() {
 	input := make(chan string)
+	// Process from same channel (fan out)
 	go workerProcess(input)
 	go workerProcess(input)
 	go workerProcess(input)
+	// publish to same channel (fan in)
 	go publisher(input)
 	go publisher(input)
 	go publisher(input)

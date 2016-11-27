@@ -1,4 +1,4 @@
-package math
+package math //must in same package
 
 import (
 	"fmt"
@@ -6,8 +6,10 @@ import (
 	"testing/quick"
 )
 
+//where Xxx can be any alphanumeric string (but the first letter must not be in [a-z])
+//and serves to identify the test routine.
 func TestAdder(t *testing.T) {
-	result := Adder(4, 7)
+	result := adder(4, 7)
 	if result != 11 {
 		t.Fatal("4 + 7 did not equal 11")
 	}
@@ -15,18 +17,19 @@ func TestAdder(t *testing.T) {
 
 func BenchmarkAdder(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		Adder(4, 7)
+		adder(4, 7)
 	}
 }
 
-func ExampleAdder() {
-	fmt.Println(Adder(4, 7))
+//Test method startwith Example must follow coorect function name to be tested
+func Exampleadder() {
+	fmt.Println(adder(4, 7))
 	// Output:
 	// 11
 }
 
-func ExampleAdder_multiple() {
-	fmt.Println(Adder(3, 6, 7, 4, 61))
+func Exampleadder_multiple() {
+	fmt.Println(adder(3, 6, 7, 4, 61))
 	// Output:
 	// 81
 }
@@ -39,5 +42,5 @@ func TestAdderBlackbox(t *testing.T) {
 }
 
 func a(x, y int) bool {
-	return Adder(x, y) == x+y
+	return adder(x, y) == x+y
 }

@@ -1,6 +1,6 @@
 package math
 
-func Adder(xs ...int) int {
+func adder(xs ...int) int {
 	res := 0
 	for _, v := range xs {
 		res += v
